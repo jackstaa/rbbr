@@ -38,9 +38,9 @@ function initializeGame() {
   // Set up player with previous position fields for robust collision detection
   player = {
     x: width / 2,
-    y: height - 50,
+    y: height - 64,
     prevX: width / 2,
-    prevY: height - 50,
+    prevY: height - 64,
     width: 64,
     height: 64,
     velocityY: 0,
