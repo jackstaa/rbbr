@@ -6,6 +6,7 @@ let jumpTimer = 0;
 const maxJumpTime = 1000; // Maximum jump charge time
 const walkSpeed = 3; // Speed of walking movement (pixels per frame)
 let bufferedDirection = 0;
+let jumpCooldown = 0; // Timer for jump direction cooldown (ms)
 let img, img2;
 
 function preload() {
@@ -78,10 +79,18 @@ function draw() {
   player.prevX = player.x;
   player.prevY = player.y;
 
-  // Handle user input for jump charging, walking, and air control
+  // Handle user input for jump charging and walking
   handleJump();      // Handles charging jump and launching when space is released
   handleWalking();   // Handles walking left or right when grounded
-  handleAirControl(); // Allow slight horizontal adjustments while airborne
+  // handleAirControl(); // Disabled to prevent movement keys in mid-air
+
+  // Update jump cooldown when grounded and not charging jump
+  if (player.grounded && jumpTimer === 0) {
+    jumpCooldown += deltaTime;
+    if (jumpCooldown >= 1000) { // Clear bufferedDirection after 1 second
+      bufferedDirection = 0;
+    }
+  }
 
   // Apply gravity if not grounded
   applyGravity();
@@ -117,6 +126,7 @@ function handleJump() {
   if (keyIsDown(32)) { // 32 is the key code for space
     jumpTimer += deltaTime;
     jumpTimer = min(jumpTimer, maxJumpTime);
+    jumpCooldown = 0; // Reset cooldown while charging jump
 
     // Update buffered direction for jumping: only set if directional keys are pressed
     if (keyIsDown(65) || keyIsDown(LEFT_ARROW)) { // A key or left arrow
@@ -142,6 +152,7 @@ function handleJump() {
       player.velocityY = -jumpPower;
       player.velocityX = xVelocity;
       player.grounded = false;
+      jumpCooldown = 0; // Reset cooldown after jump
     }
     // Reset the jump timer after releasing space, but preserve bufferedDirection
     jumpTimer = 0;
@@ -166,8 +177,8 @@ function handleWalking() {
   }
 }
 
-// Allow slight horizontal control while in the air.
-// This enhances responsiveness without altering the core challenge.
+// Disabled to prevent movement keys affecting player in mid-air
+/*
 function handleAirControl() {
   if (!player.grounded) {
     // Adjust horizontal velocity gradually
@@ -181,6 +192,7 @@ function handleAirControl() {
     player.velocityX = constrain(player.velocityX, -5, 5);
   }
 }
+*/
 
 // Reverse velocity on wall collisions and clamp the player's position within the canvas.
 function checkWallCollisions() {
@@ -259,5 +271,6 @@ function checkWinCondition() {
 // Reset game by reinitializing game objects and variables
 function resetGame() {
   initializeGame();
+  jumpCooldown = 0; // Reset cooldown on game reset
   loop(); // Restart the game loop in case it was stopped
 }
