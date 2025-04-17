@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Box Jump!</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+    #sketch-holder canvas {
+      border: 2px solid black;
+    }
+  </style>
+  <!-- p5.js library (latest) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js" onerror="console.error('Failed to load p5.js')"></script>
+  <!-- Your sketch (deferred) -->
+  <script defer src="sketch.js" onerror="console.error('Failed to load sketch.js')"></script>
+</head>
+<body>
+  <div id="sketch-holder"></div>
+</body>
+</html>
