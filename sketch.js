@@ -148,15 +148,20 @@ function handleJump() {
   }
 }
 
-// Handle walking left or right when grounded and not charging a jump
+// Handle walking left or right when grounded and not holding the spacebar
 function handleWalking() {
-  if (player.grounded && !keyIsDown(32)) { // Only walk when grounded and not charging a jump
+  if (player.grounded && !keyIsDown(32)) { // Only walk when grounded and spacebar is not held
     if (keyIsDown(65) || keyIsDown(LEFT_ARROW)) { // A key or left arrow
       player.velocityX = -walkSpeed;
     } else if (keyIsDown(68) || keyIsDown(RIGHT_ARROW)) { // D key or right arrow
       player.velocityX = walkSpeed;
     } else {
       player.velocityX = 0; // Stop moving if no directional keys are pressed
+    }
+  } else if (keyIsDown(32)) {
+    // Explicitly prevent walking movement when spacebar is held
+    if (player.grounded) {
+      player.velocityX = 0;
     }
   }
 }
