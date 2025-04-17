@@ -1,3 +1,4 @@
+// Initialize stuff
 let player;
 let platforms;
 let gameState;
@@ -7,11 +8,12 @@ const maxJumpTime = 1000; // Maximum jump charge time
 const walkSpeed = 3; // Speed of walking movement (pixels per frame)
 let bufferedDirection = 0;
 let jumpCooldown = 0; // Timer for jump direction cooldown (ms)
-let img, img2;
+let img, img2, jumpImg;
 
 function preload() {
-  img = loadImage("idle_transparent.png");
+  img = loadImage("ryan.png");
   img2 = loadImage("bg.png");
+  jumpImg = loadImage("ryan_jump.png"); // Load jump sprite
 }
 
 function setup() {
@@ -103,8 +105,12 @@ function draw() {
   checkPlatformCollisions();
   checkWallCollisions();
 
-  // Draw the player
-  image(img, player.x, player.y, player.width, player.height);
+  // Draw the player with appropriate sprite based on grounded state
+  if (player.grounded) {
+    image(img, player.x, player.y, player.width, player.height); // Idle sprite when grounded
+  } else {
+    image(jumpImg, player.x, player.y, player.width, player.height); // Jump sprite when in air
+  }
 
   // Check for win condition
   checkWinCondition();
