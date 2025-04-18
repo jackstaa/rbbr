@@ -8,6 +8,7 @@ const maxJumpTime = 1000; // Maximum jump charge time
 const walkSpeed = 3; // Speed of walking movement (pixels per frame)
 let bufferedDirection = 0;
 let jumpCooldown = 0; // Timer for jump direction cooldown (ms)
+let cameraOffsetY = 0; // Camera offset for following player
 let img, img2, jumpImg;
 
 function preload() {
@@ -52,23 +53,38 @@ function initializeGame() {
 
   // Define the platforms. One platform has an extra property isGoal.
   platforms = [
-  { x: 205, y: 5533, width: 69, height: 69 },
-  { x: 750, y: 5280, width: 69, height: 69 },
-  { x: 1020, y: 5030, width: 69, height: 69 },
-  { x: 545, y: 4830, width: 69, height: 69 },
-  { x: 410, y: 4630, width: 69, height: 69 },
-  { x: 140, y: 4640, width: 69, height: 69 },
-  { x: 410, y: 4320, width: 69, height: 69 },
-  { x: 140, y: 4255, width: 69, height: 69 },
-  { x: 810, y: 4035, width: 69, height: 69 },
-  { x: 410, y: 3650, width: 69, height: 69 },
-  { x: 70, y: 3405, width: 69, height: 69 },
-  { x: 410, y: 3080, width: 69, height: 69 },
-  { x: 0, y: 5760, width: 1080, height: 80 }  // Base platform
-];
+    { x: 205, y: 5533, width: 69, height: 69 },
+    { x: 750, y: 5280, width: 69, height: 69 },
+    { x: 1020, y: 5030, width: 69, height: 69 },
+    { x: 545, y: 4830, width: 69, height: 69 },
+    { x: 410, y: 4630, width: 69, height: 69 },
+    { x: 140, y: 4640, width: 69, height: 69 },
+    { x: 410, y: 4320, width: 69, height: 69 },
+    { x: 140, y: 4255, width: 69, height: 69 },
+    { x: 810, y: 4035, width: 69, height: 69 },
+    { x: 410, y: 3650, width: 69, height: 69 },
+    { x: 70, y: 3405, width: 69, height: 69 },
+    { x: 410, y: 3080, width: 69, height: 69 },
+    { x: 0, y: 5760, width: 1080, height: 80 }  // Base platform
+  ];
+}
+
+function keyPressed() {
+  if (keyCode === 32) { // Spacebar
+    event.preventDefault(); // Prevent default browser behavior (scrolling)
+  }
 }
 
 function draw() {
+  // Calculate camera offset to follow player (center vertically)
+  cameraOffsetY = height / 2 - player.y;
+  // Clamp offset to keep canvas bounds in view (0 to 5760)
+  cameraOffsetY = constrain(cameraOffsetY, -(5760 - height), 0);
+
+  // Apply camera translation
+  push();
+  translate(0, cameraOffsetY);
+
   background(220);
   image(img2, 0, 0, 1080, 5760); // Draw background
 
@@ -114,7 +130,10 @@ function draw() {
     image(jumpImg, player.x, player.y, player.width, player.height); // Jump sprite when in air
   }
 
-  // Check for win condition
+  // End camera translation
+  pop();
+
+  // Draw UI elements (e.g., win message) in screen coordinates
   checkWinCondition();
 }
 
@@ -271,7 +290,7 @@ function checkWinCondition() {
     textSize(32);
     fill(0);
     textAlign(CENTER, CENTER);
-    text("YOU WIN!", width / 2, height / 2);
+    text("YOU WIN!", width / 2, height / 2 - cameraOffsetY); // Adjust for camera
     noLoop(); // Stop the game loop
   }
 }
@@ -280,5 +299,6 @@ function checkWinCondition() {
 function resetGame() {
   initializeGame();
   jumpCooldown = 0; // Reset cooldown on game reset
+  cameraOffsetY = 0; // Reset camera position
   loop(); // Restart the game loop in case it was stopped
 }
