@@ -12,18 +12,18 @@ let img, img2, jumpImg;
 
 function preload() {
   img = loadImage("ryan.png");
-  img2 = loadImage("bg.png");
+  img2 = loadImage("811.png");
   jumpImg = loadImage("ryan_jump.png"); // Load jump sprite
 }
 
 function setup() {
-  let canvas = createCanvas(1024, 1536);
+  let canvas = createCanvas(1080, 5760);
   // canvas.parent('sketch-holder'); // kept for potential legacy use
   initializeGame();
   
   // Create reset button
   resetButton = createButton('Reset Game');
-  resetButton.position(width - 1024, height + 10);
+  resetButton.position(width - 1080, height + 10);
   resetButton.mousePressed(resetGame);
 }
 
@@ -52,23 +52,25 @@ function initializeGame() {
 
   // Define the platforms. One platform has an extra property isGoal.
   platforms = [
-    { x: 80, y: 45, width: 360, height: 40, isGoal: true },  // Goal platform
-    { x: 673, y: 260, width: 240, height: 40 },             // First right
-    { x: 75, y: 520, width: 245, height: 40 },             // Third left
-    { x: 250, y: 715, width: 150, height: 40 },             // Fourth left
-    { x: 780, y: 900, width: 150, height: 40 },            // Fifth right
-    { x: 75, y: 950, width: 300, height: 40 },            // Sixth right
-    { x: 710, y: 980, width: 80, height: 25 },            // Seventh left
-    { x: 780, y: 900, width: 150, height: 40 },            // Eighth left
-    { x: 260, y: 1320, width: 125, height: 40 },            // Eighth left
-    { x: 445, y: 1190 , width: 200, height: 10 },            // Eighth left
-    { x: 0, y: 1536, width: 1024, height: 80 }             // Base platform
-  ];
+  { x: 205, y: 5533, width: 69, height: 69 },
+  { x: 750, y: 5280, width: 69, height: 69 },
+  { x: 1020, y: 5030, width: 69, height: 69 },
+  { x: 545, y: 4830, width: 69, height: 69 },
+  { x: 410, y: 4630, width: 69, height: 69 },
+  { x: 140, y: 4640, width: 69, height: 69 },
+  { x: 410, y: 4320, width: 69, height: 69 },
+  { x: 140, y: 4255, width: 69, height: 69 },
+  { x: 810, y: 4035, width: 69, height: 69 },
+  { x: 410, y: 3650, width: 69, height: 69 },
+  { x: 70, y: 3405, width: 69, height: 69 },
+  { x: 410, y: 3080, width: 69, height: 69 },
+  { x: 0, y: 5760, width: 1080, height: 80 }  // Base platform
+];
 }
 
 function draw() {
   background(220);
-  image(img2, 0, 0, 1024, 1536); // Draw background
+  image(img2, 0, 0, 1080, 5760); // Draw background
 
   // Draw platforms – goal platforms are highlighted in green
   platforms.forEach(platform => {
