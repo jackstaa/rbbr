@@ -12,7 +12,7 @@ let img, img2, jumpImg;
 
 function preload() {
   img = loadImage("ryan.png");
-  img2 = loadImage("811.png");
+  img2 = loadImage("811.jpg");
   jumpImg = loadImage("ryan_jump.png"); // Load jump sprite
 }
 
