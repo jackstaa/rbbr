@@ -56,6 +56,7 @@ function initializeGame() {
     { x: 205, y: 5533, width: 69, height: 69 },
     { x: 750, y: 5280, width: 69, height: 69 },
     { x: 1020, y: 5030, width: 69, height: 69 },
+    { x: 545, y: 4830, width: 69, height: 69 },
     { x: 410, y: 4630, width: 69, height: 69 },
     { x: 140, y: 4640, width: 69, height: 69 },
     { x: 410, y: 4320, width: 69, height: 69 },
@@ -63,7 +64,7 @@ function initializeGame() {
     { x: 810, y: 4035, width: 69, height: 69 },
     { x: 410, y: 3650, width: 69, height: 69 },
     { x: 70, y: 3405, width: 69, height: 69 },
-    { x: 410, y: 3080, width: 69, height: 69, isGoal: true },
+    { x: 410, y: 3080, width: 69, height: 69 },
     { x: 0, y: 5760, width: 1080, height: 80 }  // Base platform
   ];
 }
@@ -76,10 +77,14 @@ function keyPressed() {
 }
 
 function draw() {
-  // Calculate camera offset to follow player (center vertically)
-  cameraOffsetY = height / 2 - player.y;
+  // Calculate desired camera offset to position player at 1/3 of viewport height
+  let targetOffsetY = height / 3 - player.y;
+  // Get viewport height (fallback to 720 if windowHeight unavailable)
+  let viewportHeight = windowHeight || 720;
   // Clamp offset to keep canvas bounds in view (0 to 5760)
-  cameraOffsetY = constrain(cameraOffsetY, -(5760 - height), 0);
+  targetOffsetY = constrain(targetOffsetY, -(5760 - viewportHeight), viewportHeight - player.height);
+  // Smoothly interpolate camera position
+  cameraOffsetY = lerp(cameraOffsetY, targetOffsetY, 0.1);
 
   // Apply camera translation
   push();
