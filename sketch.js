@@ -19,7 +19,7 @@ function preload() {
 
 function setup() {
   let canvas = createCanvas(1080, 5760);
-  // canvas.parent('sketch-holder'); // kept for potential legacy use
+  canvas.parent('sketch-holder'); // Attach canvas to #sketch-holder
   initializeGame();
   
   // Create reset button
@@ -56,7 +56,6 @@ function initializeGame() {
     { x: 205, y: 5533, width: 69, height: 69 },
     { x: 750, y: 5280, width: 69, height: 69 },
     { x: 1020, y: 5030, width: 69, height: 69 },
-    { x: 545, y: 4830, width: 69, height: 69 },
     { x: 410, y: 4630, width: 69, height: 69 },
     { x: 140, y: 4640, width: 69, height: 69 },
     { x: 410, y: 4320, width: 69, height: 69 },
@@ -64,7 +63,7 @@ function initializeGame() {
     { x: 810, y: 4035, width: 69, height: 69 },
     { x: 410, y: 3650, width: 69, height: 69 },
     { x: 70, y: 3405, width: 69, height: 69 },
-    { x: 410, y: 3080, width: 69, height: 69 },
+    { x: 410, y: 3080, width: 69, height: 69, isGoal: true },
     { x: 0, y: 5760, width: 1080, height: 80 }  // Base platform
   ];
 }
@@ -72,6 +71,7 @@ function initializeGame() {
 function keyPressed() {
   if (keyCode === 32) { // Spacebar
     event.preventDefault(); // Prevent default browser behavior (scrolling)
+    return false; // Stop event propagation
   }
 }
 
