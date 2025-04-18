@@ -8,13 +8,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh; /* Changed from height to support tall canvas */
       margin: 0;
       background-color: #f0f0f0;
       font-family: Arial, sans-serif;
+      overflow: hidden; /* Disable page scrolling */
     }
     #sketch-holder canvas {
       border: 2px solid black;
+      display: block; /* Ensure canvas renders correctly */
     }
   </style>
   <!-- p5.js library (latest) -->
@@ -24,5 +26,26 @@
 </head>
 <body>
   <div id="sketch-holder"></div>
+  <script>
+    // Prevent spacebar and wheel scrolling
+    window.addEventListener('keydown', (event) => {
+      if (event.keyCode === 32) { // Spacebar
+        event.preventDefault(); // Block scrolling
+      }
+    });
+    window.addEventListener('wheel', (event) => {
+      event.preventDefault(); // Block mouse wheel scrolling
+    }, { passive: false });
+    // Ensure canvas captures focus on click
+    document.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.querySelector('#sketch-holder canvas');
+      if (canvas) {
+        canvas.addEventListener('click', () => {
+          canvas.focus();
+        });
+      }
+    });
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93200c784d817bc6',t:'MTc0NDkzNjE3NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
