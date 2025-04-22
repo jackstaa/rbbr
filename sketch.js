@@ -140,7 +140,7 @@ function draw() {
   // Draw platforms – goal platforms are highlighted in green
   platforms.forEach(platform => {
     // Set fill color with transparency (alpha = 127 for 50% transparency)
-    fill(platform.isGoal ? color(0, 255, 0, 127) : color(100, 100, 100, 127));
+    fill(platform.isGoal ? color(0, 255, 0, 50) : color(100, 100, 100, 50));
     rect(platform.x, platform.y, platform.width, platform.height);
   });
 
