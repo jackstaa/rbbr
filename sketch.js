@@ -126,7 +126,7 @@ function draw() {
   // Get viewport height (fallback to 720 if windowHeight unavailable)
   let viewportHeight = windowHeight || 720;
   // Clamp offset to keep canvas bounds in view (0 to 5760)
-  targetOffsetY = constrain(targetOffsetY, -(5760 - viewportHeight), viewportHeight - player.height);
+  targetOffsetY = constrain(targetOffsetY, -(6012 - viewportHeight), viewportHeight - player.height);
   // Smoothly interpolate camera position
   cameraOffsetY = lerp(cameraOffsetY, targetOffsetY, 0.1);
 
@@ -135,7 +135,7 @@ function draw() {
   translate(0, cameraOffsetY);
 
   background(220);
-  image(img2, 0, 0, 1080, 5760); // Draw background
+  image(img2, 0, 0, 1020, 6012); // Draw background
 
   // Draw platforms – goal platforms are highlighted in green
   platforms.forEach(platform => {
