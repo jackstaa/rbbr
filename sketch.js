@@ -13,12 +13,12 @@ let img, img2, jumpImg;
 
 function preload() {
   img = loadImage("ryan.png");
-  img2 = loadImage("811.jpg");
+  img2 = loadImage("bg.png");
   jumpImg = loadImage("ryan_jump.png"); // Load jump sprite
 }
 
 function setup() {
-  let canvas = createCanvas(1080, 5760);
+  let canvas = createCanvas(1020, 6012);
   canvas.parent('sketch-holder'); // Attach canvas to #sketch-holder
   initializeGame();
   
@@ -52,21 +52,65 @@ function initializeGame() {
   };
 
   // Define the platforms. One platform has an extra property isGoal.
-  platforms = [
-    { x: 205, y: 5533, width: 69, height: 69 },
-    { x: 750, y: 5280, width: 69, height: 69 },
-    { x: 1020, y: 5030, width: 69, height: 69 },
-    { x: 545, y: 4830, width: 69, height: 69 },
-    { x: 410, y: 4630, width: 69, height: 69 },
-    { x: 140, y: 4640, width: 69, height: 69 },
-    { x: 410, y: 4320, width: 69, height: 69 },
-    { x: 140, y: 4255, width: 69, height: 69 },
-    { x: 810, y: 4035, width: 69, height: 69 },
-    { x: 410, y: 3650, width: 69, height: 69 },
-    { x: 70, y: 3405, width: 69, height: 69 },
-    { x: 410, y: 3080, width: 69, height: 69 },
-    { x: 0, y: 5760, width: 1080, height: 80 }  // Base platform
-  ];
+platforms = [
+    { x: 402, y: 226, width: 226, height: 32 },
+    { x: 88, y: 405, width: 279, height: 170 },
+    { x: 602, y: 548, width: 296, height: 173 },
+    { x: 420, y: 830, width: 58, height: 52 },
+    { x: 123, y: 857, width: 97, height: 88 },
+    { x: 270, y: 1136, width: 85, height: 79 },
+    { x: 514, y: 1291, width: 70, height: 76 },
+    { x: 358, y: 1376, width: 79, height: 64 },
+    { x: 555, y: 1585, width: 38, height: 46 },
+    { x: 243, y: 1629, width: 44, height: 35 },
+    { x: 320, y: 1761, width: 41, height: 14 },
+    { x: 728, y: 1776, width: 232, height: 55 },
+    { x: 470, y: 1940, width: 120, height: 55 },
+    { x: 141, y: 2031, width: 102, height: 52 },
+    { x: 655, y: 2107, width: 293, height: 26 },
+    { x: 67, y: 2178, width: 94, height: 55 },
+    { x: 232, y: 2310, width: 111, height: 49 },
+    { x: 55, y: 2433, width: 199, height: 52 },
+    { x: 799, y: 2530, width: 117, height: 55 },
+    { x: 414, y: 2586, width: 185, height: 17 },
+    { x: 743, y: 2630, width: 76, height: 26 },
+    { x: 167, y: 2671, width: 99, height: 14 },
+    { x: 76, y: 2803, width: 26, height: 17 },
+    { x: 194, y: 2803, width: 55, height: 20 },
+    { x: 426, y: 2847, width: 158, height: 26 },
+    { x: 111, y: 2888, width: 138, height: 17 },
+    { x: 658, y: 2906, width: 273, height: 17 },
+    { x: 390, y: 3003, width: 232, height: 8 },
+    { x: 173, y: 3061, width: 52, height: 17 },
+    { x: 208, y: 3164, width: 97, height: 23 },
+    { x: 749, y: 3243, width: 49, height: 23 },
+    { x: 673, y: 3349, width: 99, height: 20 },
+    { x: 326, y: 3396, width: 126, height: 26 },
+    { x: 537, y: 3560, width: 123, height: 23 },
+    { x: 282, y: 3763, width: 135, height: 20 },
+    { x: 549, y: 3951, width: 138, height: 29 },
+    { x: 778, y: 4159, width: 58, height: 26 },
+    { x: 293, y: 4168, width: 155, height: 23 },
+    { x: 79, y: 4274, width: 61, height: 61 },
+    { x: 532, y: 4347, width: 26, height: 11 },
+    { x: 643, y: 4444, width: 120, height: 73 },
+    { x: 490, y: 4623, width: 38, height: 41 },
+    { x: 676, y: 4782, width: 235, height: 44 },
+    { x: 414, y: 4914, width: 94, height: 17 },
+    { x: 76, y: 5072, width: 246, height: 44 },
+    { x: 464, y: 5146, width: 26, height: 11 },
+    { x: 249, y: 5260, width: 149, height: 41 },
+    { x: 652, y: 5260, width: 11, height: 49 },
+    { x: 781, y: 5439, width: 164, height: 46 },
+    { x: 76, y: 5489, width: 293, height: 52 },
+    { x: 711, y: 5521, width: 85, height: 20 },
+    { x: 76, y: 5692, width: 199, height: 46 },
+    { x: 676, y: 5736, width: 229, height: 11 },
+    { x: 558, y: 5812, width: 26, height: 17 },
+    { x: 270, y: 5865, width: 129, height: 44 },
+    { x: 0, y: 6012, width: 1020, height: 80 }  // Base platform
+];
+
 }
 
 function keyPressed() {
