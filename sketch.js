@@ -122,7 +122,7 @@ function keyPressed() {
 
 function draw() {
 // Calculate desired camera offset to center player's midpoint in viewport
-  let targetOffsetY = height / 2 - player.y - player.height / 2;
+  let targetOffsetY = height / 4 - player.y - player.height / 4;
   // Get viewport height (fallback to 720 if windowHeight unavailable)
   let viewportHeight = windowHeight || 720;
   // Clamp offset to keep canvas bounds in view (0 to 6012)
