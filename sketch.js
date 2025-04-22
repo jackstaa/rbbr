@@ -53,7 +53,7 @@ function initializeGame() {
 
   // Define the platforms. One platform has an extra property isGoal.
 platforms = [
-    { x: 402, y: 226, width: 226, height: 32 },
+    { x: 402, y: 226, width: 226, height: 32, isGoal: true},
     { x: 88, y: 405, width: 279, height: 170 },
     { x: 602, y: 548, width: 296, height: 173 },
     { x: 420, y: 830, width: 58, height: 52 },
