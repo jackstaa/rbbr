@@ -18,7 +18,7 @@ function preload() {
 }
 
 function setup() {
-  let canvas = createCanvas(1020, 6012);
+  let canvas = createCanvas(1020, 1530);
   canvas.parent('sketch-holder'); // Attach canvas to #sketch-holder
   initializeGame();
   
