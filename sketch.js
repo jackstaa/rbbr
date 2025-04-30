@@ -23,7 +23,7 @@ let stage1_platforms = [
   { x: 275, y: 742, width: 149, height: 35 },
   { x: 545, y: 934, width: 146, height: 29 },
   { x: 290, y: 1152, width: 163, height: 32 },
-  { x: 0, y: 1450, width: 1020, height: 80 } // Adjusted base platform
+  { x: 0, y: 1500, width: 1020, height: 40 } // Adjusted base platform
 ];
 let stage2_platforms = [
   { x: 324, y: 63, width: 227, height: 43 },
