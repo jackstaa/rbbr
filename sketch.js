@@ -191,7 +191,7 @@ function draw() {
   if (player.y < 0 && currentStageIndex < 5) {
     currentStageIndex++;
     platforms = stages[currentStageIndex].platforms;
-    player.y = 1530 - player.height;
+    player.y = 1500 - player.height;
     player.grounded = false;
   } else if (player.y > 1530 && currentStageIndex > 0) {
     currentStageIndex--;
