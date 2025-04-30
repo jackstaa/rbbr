@@ -120,16 +120,50 @@ function keyPressed() {
   }
 }
 
-function draw() {
-// Calculate desired camera offset to center player's midpoint in viewport
-  let targetOffsetY = height / 6 - player.y - player.height / 6;
-  // Get viewport height (fallback to 720 if windowHeight unavailable)
-  let viewportHeight = windowHeight || 720;
-  // Clamp offset to keep canvas bounds in view (0 to 6012)
-  targetOffsetY = constrain(targetOffsetY, -(6012 - viewportHeight), 0);
-  // Smoothly interpolate camera position
-  cameraOffsetY = lerp(cameraOffsetY, targetOffsetY, 0.1);
+// --- Declare persistent state variables outside draw() ---
+let hasSwitched = false;
+let blockHeight = 1400;
+let camCut = 200;
+let viewportHeight = 915;
 
+let curBlock = 6032 / 10 - 6000 - camCut;
+let nextBlock = curBlock + blockHeight;
+let prevBlock = curBlock - blockHeight;
+
+let curBlockEnd = -1 * (curBlock + 590.8);
+let curBlockStart = -1 * curBlock;
+
+let camMode = 'curBlock'; // Track current camera mode
+
+function draw() {
+  // Clamp current block to canvas bounds
+  curBlock = constrain(curBlock, -(6012 - viewportHeight), 0);
+
+  // Smooth camera follow
+  cameraOffsetY = lerp(cameraOffsetY, curBlock, 0.1);
+
+  // --- Transition up ---
+  if (player.y <= curBlockEnd) {
+    prevBlock = curBlock;
+    curBlock = nextBlock;
+    nextBlock = curBlock + blockHeight/2;
+
+    // Recalculate bounds for new block
+    curBlockEnd -= 600;
+    curBlockStart -= 600;
+  }
+
+  // --- Transition down ---
+  if (player.y >= curBlockStart + 100) {
+    nextBlock = curBlock;
+    curBlock = prevBlock;
+    prevBlock = curBlock - blockHeight/2;
+
+    // Recalculate bounds
+    curBlockEnd += 600 ;
+    curBlockStart += 600;
+  }
+ 
   // Apply camera translation
   push();
   translate(0, cameraOffsetY);
