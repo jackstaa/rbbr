@@ -382,7 +382,7 @@ function checkWinCondition() {
     textSize(32);
     fill(0);
     textAlign(CENTER, CENTER);
-    text("YOU WIN!", width / 2, height / 2);
+    text("THANK YOU FOR GUIDING RYAN TO THE PEARLY GATES", width / 2, height / 2);
     noLoop();
   }
 }
