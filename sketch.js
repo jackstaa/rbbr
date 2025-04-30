@@ -72,7 +72,6 @@ let stage4_platforms = [
   { x: 33, y: 973, width: 303, height: 175 },
   { x: 735, y: 1069, width: 53, height: 307 },
   { x: 259, y: 1149, width: 107, height: 41 },
-  { x: 397, y: 1387, width: 277, height: 51 },
   { x: 309, y: 1355, width: 191, height: 47 }
 ];
 let stage5_platforms = [
