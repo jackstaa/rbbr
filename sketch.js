@@ -107,7 +107,7 @@ let stage5_platforms = [
   { x: 69, y: 1473, width: 325, height: 43 }
 ];
 let stage6_platforms = [
-  { x: 369, y: 240, width: 285, height: 37, isGoal: true }, // Goal platform
+  { x: 369, y: 240, width: 285, height: 37,}, 
   { x: 139, y: 377, width: 231, height: 43 },
   { x: 645, y: 473, width: 239, height: 43 },
   { x: 227, y: 637, width: 223, height: 41 },
@@ -116,6 +116,18 @@ let stage6_platforms = [
   { x: 589, y: 1207, width: 233, height: 47 },
   { x: 233, y: 1407, width: 235, height: 41 }
 ];
+
+let stage7_platforms = [
+    { x: 345, y: 145, width: 27, height: 15,  isGoal: true  }, // Goal platform
+    { x: 397, y: 451, width: 243, height: 37 },
+    { x: 181, y: 525, width: 43, height: 93 },
+    { x: 771, y: 563, width: 45, height: 95 },
+    { x: 485, y: 761, width: 47, height: 91 },
+    { x: 207, y: 1027, width: 41, height: 89 },
+    { x: 749, y: 1073, width: 45, height: 95 },
+    { x: 487, y: 1315, width: 43, height: 91 }
+];
+
 
 function preload() {
   img = loadImage("ryan.png");
@@ -131,6 +143,7 @@ function preload() {
   stageBackgrounds[3] = loadImage("alley.png");
   stageBackgrounds[4] = loadImage("liquor.png");
   stageBackgrounds[5] = loadImage("heaven.png");
+  stageBackgrounds[6] = loadImage("god.png");
 
   // Define stages
   stages = [
@@ -139,7 +152,8 @@ function preload() {
     { background: stageBackgrounds[2], platforms: stage3_platforms },
     { background: stageBackgrounds[3], platforms: stage4_platforms },
     { background: stageBackgrounds[4], platforms: stage5_platforms },
-    { background: stageBackgrounds[5], platforms: stage6_platforms }
+    { background: stageBackgrounds[5], platforms: stage6_platforms },
+    { background: stageBackgrounds[6], platforms: stage7_platforms }
   ];
 
   // Load item images
