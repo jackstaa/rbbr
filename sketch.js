@@ -221,9 +221,10 @@ function draw() {
   background(220);
   image(stages[currentStageIndex].background, 0, 0, 1020, 1530);
 
-  platforms.forEach(platform => {
-    fill(platform.isGoal ? color(0, 255, 0, 0) : color(100, 100, 0, 0));
-    rect(platform.x, platform.y, platform.width, platform.height);
+platforms.forEach(platform => {
+  fill(0, 0, 0, 0);
+  noStroke();
+  rect(platform.x, platform.y, platform.width, platform.height);
   });
 
   // Draw items
