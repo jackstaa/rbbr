@@ -397,7 +397,7 @@ function checkWinCondition() {
     textSize(32);
     fill(0);
     textAlign(CENTER, CENTER);
-    text("THANK YOU FOR GUIDING RYAN TO HEAVEN", width / 2, height / 2);
+    text("THANK YOU FOR RETURNING MY SON TO ME", width / 2, height / 2);
     noLoop();
   }
 }
