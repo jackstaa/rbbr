@@ -222,7 +222,7 @@ function draw() {
   image(stages[currentStageIndex].background, 0, 0, 1020, 1530);
 
   platforms.forEach(platform => {
-    fill(platform.isGoal ? color(0, 255, 0, 0) : color(100, 100, 100, 0));
+    fill(platform.isGoal ? color(0, 255, 0, 0) : color(100, 100, 0, 0));
     rect(platform.x, platform.y, platform.width, platform.height);
   });
 
