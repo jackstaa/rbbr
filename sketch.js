@@ -118,7 +118,7 @@ let stage6_platforms = [
 
 let stage7_platforms = [
     { x: 345, y: 145, width: 27, height: 15,  isGoal: true  }, // Goal platform
-    { x: 397, y: 451, width: 243, height: 37 },
+    { x: 397, y: 451, width: 150, height: 37 },
     { x: 181, y: 525, width: 43, height: 93 },
     { x: 771, y: 563, width: 45, height: 95 },
     { x: 485, y: 761, width: 47, height: 91 },
