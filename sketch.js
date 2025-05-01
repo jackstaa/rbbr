@@ -151,10 +151,10 @@ function preload() {
 
   // Define items (positioned in mid-air)
   items = [
-    { stageIndex: 3, x: 500, y: 200, width: 32, height: 32, image: itemImages[0], collected: false },
-    { stageIndex: 4, x: 400, y: 300, width: 32, height: 32, image: itemImages[1], collected: false },
-    { stageIndex: 2, x: 500, y: 400, width: 32, height: 32, image: itemImages[2], collected: false },
-    { stageIndex: 5, x: 600, y: 500, width: 32, height: 32, image: itemImages[3], collected: false }
+    { stageIndex: 3, x: 500, y: 200, width: 50, height: 50, image: itemImages[0], collected: false },
+    { stageIndex: 4, x: 400, y: 300, width: 50, height: 50, image: itemImages[1], collected: false },
+    { stageIndex: 2, x: 500, y: 400, width: 50, height: 50, image: itemImages[2], collected: false },
+    { stageIndex: 5, x: 600, y: 500, width: 50, height: 50, image: itemImages[3], collected: false }
   ];
 }
 
