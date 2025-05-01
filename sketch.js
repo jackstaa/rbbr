@@ -216,7 +216,7 @@ function keyPressed() {
 
 function draw() {
   // Stage switching
-  if (player.y < 0 && currentStageIndex < 5) {
+  if (player.y < 0 && currentStageIndex < 6) {
     currentStageIndex++;
     platforms = stages[currentStageIndex].platforms;
     player.y = 1500 - player.height;
