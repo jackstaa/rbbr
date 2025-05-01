@@ -107,7 +107,7 @@ let stage5_platforms = [
   { x: 69, y: 1473, width: 325, height: 43 }
 ];
 let stage6_platforms = [
-  { x: 360, y: 250, width: 285, height: 37, isGoal: true }, // Goal platform
+  { x: 369, y: 240, width: 285, height: 37, isGoal: true }, // Goal platform
   { x: 139, y: 377, width: 231, height: 43 },
   { x: 645, y: 473, width: 239, height: 43 },
   { x: 227, y: 637, width: 223, height: 41 },
