@@ -202,7 +202,7 @@ function initializeGame() {
     grounded: true
   };
 
-  currentStageIndex = 0;
+  currentStageIndex = 5;
   platforms = stages[currentStageIndex].platforms;
   itemsCollected = 0;
   items.forEach(item => item.collected = false);
